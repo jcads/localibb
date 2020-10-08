@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require("helmet");
+const fs = require("fs");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,7 +16,7 @@ app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-const dev_db_url = 'mongodb+srv://firehazard:youonlyliveonce17@cluster0.c1m1j.mongodb.net/local_library?retryWrites=true&w=majority';
+const dev_db_url = fs.readFileSync("secrets.txt").toString();
 var mongoDB = process.env.MONGODB_URI || dev_db_url; 
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
