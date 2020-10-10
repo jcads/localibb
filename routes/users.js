@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/cool', (req, res, next) => {
+  console.log(process.versions.node.split('.')[0] === "14")
   res.send("You're so cool");
 });
 

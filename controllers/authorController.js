@@ -51,14 +51,13 @@ exports.author_create_post = [
         .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
     validator.body('family_name').isLength({ min: 1 }).trim().withMessage('Family name must be specified.')
         .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
-    validator.body('date_of_birth', 'Invalid date of birth').optional({ checkFalsy: true }).isISO8601(),
-    validator.body('date_of_death', 'Invalid date of death').optional({ checkFalsy: true }).isISO8601(),
+    validator.body('date_of_birth', 'Invalid date of birth').optional({ checkFalsy: true }).isISO8601().toDate(),
+    validator.body('date_of_death', 'Invalid date of death').optional({ checkFalsy: true }).isISO8601().toDate(),
 
     // Sanitize fields.
     validator.body('first_name').escape(),
     validator.body('family_name').escape(),
-    validator.body('date_of_birth').toDate(),
-    validator.body('date_of_death').toDate(),
+   
 
     // Process request after validation and sanitization.
     (req, res, next) => {
