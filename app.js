@@ -16,7 +16,7 @@ app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-const dev_db_url = fs.readFileSync("secrets.txt").toString();
+//const dev_db_url = fs.readFileSync("secrets.txt").toString();
 var mongoDB = process.env.MONGODB_URI || dev_db_url; 
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
