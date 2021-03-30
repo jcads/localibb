@@ -55,6 +55,7 @@ exports.book_detail = function(req, res, next) {
           .exec(callback);
         },
     }, function(err, results) {
+        // TODO: add middleware for unescaping data from db
         if (err) { return next(err); }
         if (results.book==null) { // No results.
             var err = new Error('Book not found');

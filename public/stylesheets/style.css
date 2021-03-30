@@ -3,3 +3,8 @@
     padding: 0;
     list-style: none;
 }
+
+form {
+    width: 50%;
+    margin: auto;
+}
