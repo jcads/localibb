@@ -38,7 +38,7 @@ AuthorSchema
     if (this.date_of_death) {
         return this.date_of_birth ? moment(this.date_of_birth).format('YYYY') + ' - ' + moment(this.date_of_death).format('YYYY') : ' - '; 
     } else {
-        return moment(this.date_of_birth) + " - Present";
+        return moment(this.date_of_birth).format('YYYY') + " - Present";
     }
 });
 
